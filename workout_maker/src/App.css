@@ -1,8 +1,9 @@
 
 
 .App {
+  margin: 2px;
   text-align: center;
-  background-color: #262626;
+  background-color: #303030;
   font-family: Nova Square;
   color: rgb(255, 255, 255);
   font-size: 25px;
@@ -14,11 +15,15 @@
   margin-bottom: 50px;
 }
 
-.InteractiveScreen{
-
+.InteracticeScreen{
+  background-color: #101010;
+  margin-left: 10%;
+  margin-right: 10%;
+  block-size: 500px;
+  border-color: #000000;
 }
 
-.box{
+.container{
   margin: 50px;
   border-color: aquamarine;
   border-width: 10px;

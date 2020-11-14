@@ -1,4 +1,5 @@
 import React from "react"
+import "./ModStyles.css"
 
 class InteractiveScreen extends React.Component {
     constructor() {
@@ -21,12 +22,17 @@ class InteractiveScreen extends React.Component {
         }
     }
 
+    
+
+    
     render() {
         return (
             //display block
-            <div className="box">
+            <div >
                 <div>
                     {this.Instructions()}
+                    <button className="button">Save setup</button>
+                    <button className="button">Continue</button>
                 </div>
             </div>
         );

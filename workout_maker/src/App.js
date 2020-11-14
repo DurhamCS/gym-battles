@@ -7,9 +7,15 @@ import InteractiveScreen from './workout_modules/InteractiveScreen.js';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <InteractiveScreen />
-      <Exercises />
+      <div className="Header">
+        <Header />
+      </div>
+      <div className="InteracticeScreen">
+        <InteractiveScreen />
+      </div>
+      <div className="Exercises">
+        <Exercises />
+      </div>
      </div>
   );
 }

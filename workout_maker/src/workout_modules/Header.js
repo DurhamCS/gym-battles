@@ -2,7 +2,7 @@
 
 function Header() {
     return (
-        <header className="Header">Choose your exercise</header>
+        <header>Choose your exercise</header>
     )
 }
 
