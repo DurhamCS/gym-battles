@@ -1,7 +1,9 @@
-import React, { ReactChildren } from "react";
+import React from "react";
+import "./HomePage.css";
 import { CSSTransition } from "react-transition-group";
 import { initializeIcons } from "@uifabric/icons";
 import { Icon } from "@fluentui/react/lib/Icon";
+import { JoinSessionForm } from "./JoinSessionForm";
 
 initializeIcons();
 
@@ -13,16 +15,13 @@ interface btnProps {
   clickHandler: (idx: number) => void;
 }
 
-interface slideProps {
-  closeHandler: VoidFunction;
-  children: unknown;
-  className: string;
-}
-
 function Btn(props: btnProps) {
   if (props.selectedIdx === props.idx)
     return (
-      <div className="d-flex">
+      <div
+        className="d-flex"
+        style={{ cursor: "pointer" }}
+        onClick={() => props.clickHandler(props.idx)}>
         <svg className="HomePage-btn-marker">
           <path
             fill="None"
@@ -34,11 +33,7 @@ function Btn(props: btnProps) {
             d="M 0,0 L 0,24 20,12 Z"
           />
         </svg>
-        <p
-          className="HomePage-btn HomePage-btn-selected"
-          onClick={() => props.clickHandler(props.idx)}>
-          {props.text}
-        </p>
+        <p className="HomePage-btn HomePage-btn-selected">{props.text}</p>
       </div>
     );
   else
@@ -53,14 +48,22 @@ function Btn(props: btnProps) {
 
 const buttons = ["Create Session", "Join Session"];
 
+interface slideProps {
+  closeHandler: VoidFunction;
+  children: unknown;
+  className: string;
+  title: string;
+}
+
 function Slide(props: slideProps) {
   return (
-    <div className={"HomePage-slide " + props.className}>
+    <div className={"HomePage-slide d-flex " + props.className}>
       <Icon
         onClick={() => props.closeHandler()}
         iconName="Back"
-        className="HomePage-slide-back-button"
+        className="HomePage-slide-back-button icon-btn"
       />
+      <p className="HomePage-slide-title">{props.title}</p>
       {props.children}
     </div>
   );
@@ -151,7 +154,8 @@ export class HomePage extends React.Component<{}, IHomePageState, any> {
           classNames="HomePage-slide">
           <Slide
             closeHandler={this.closeSlide}
-            className="HomePage-builder-slide">
+            className="HomePage-builder-slide"
+            title="Create Session">
             <p></p>
           </Slide>
         </CSSTransition>
@@ -170,8 +174,11 @@ export class HomePage extends React.Component<{}, IHomePageState, any> {
           in={this.state.isJoining || this.state.hasCreated}
           timeout={250}
           classNames="HomePage-slide">
-          <Slide closeHandler={this.closeSlide} className="HomePage-code-slide">
-            <p></p>
+          <Slide
+            closeHandler={this.closeSlide}
+            className="HomePage-code-slide"
+            title="Join Session">
+            <JoinSessionForm />
           </Slide>
         </CSSTransition>
       </header>

@@ -1,0 +1,118 @@
+.HomePage-header {
+  background-color: #262626;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.HomePage-title {
+  margin-top: -6vw;
+  font-size: 48px;
+}
+
+.HomePage-btn {
+  cursor: pointer;
+}
+
+.HomePage-btn-selected {
+  color: #ffc000;
+}
+
+.HomePage-btn-marker {
+  width: 28px;
+  height: 32px;
+  margin-right: 12px;
+  margin-left: -40px;
+}
+
+.HomePage-bottom-svg {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  pointer-events: none;
+}
+
+.HomePage-slide {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: -100vw;
+  top: 0;
+  border-radius: 100vmin;
+}
+
+.HomePage-slide-enter {
+  left: -100vw;
+  border-radius: 100vmin;
+}
+
+.HomePage-slide-enter-active {
+  left: 0;
+  border-radius: 0;
+  transition: left 250ms, border-radius 250ms;
+}
+
+.HomePage-slide-enter-done {
+  left: 0;
+  border-radius: 0;
+}
+
+.HomePage-slide-exit {
+  left: 0;
+  border-radius: 0;
+}
+
+.HomePage-slide-exit-active {
+  left: -100vw;
+  border-radius: 100vmin;
+  transition: left 250ms, border-radius 250ms;
+}
+
+.HomePage-slide-exit-done {
+  left: -100vw;
+  border-radius: 100vmin;
+}
+
+.HomePage-builder-slide {
+  background-image: linear-gradient(to top right, #a07400, #ffc000);
+}
+
+.HomePage-code-slide {
+  background-image: linear-gradient(to top right, #461a9d, #7d35ff);
+}
+
+.icon-btn {
+  cursor: pointer;
+  background: #00000033;
+  border-radius: 100%;
+  transform: scale(0.9);
+  transition: all 100ms;
+}
+
+.icon-btn:hover {
+  background: #00000066;
+  transform: scale(1);
+}
+
+.HomePage-slide-back-button {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  padding: 16px;
+  font-size: 20px;
+}
+
+.JoinSessionForm-submit-button {
+  padding: 10px;
+  margin-left: 12px;
+}
+
+.HomePage-slide-title {
+  position: absolute;
+  top: 32px;
+  left: calc(50% - (width/2));
+}
