@@ -1,7 +1,13 @@
+import exerciseData from "./Exercisedata"
+import Exercise from "./Exercise"
+
 
 function Exercises() {
+    const exerciseComponents = exerciseData.map(prop => <Exercise exer={prop.exer} key={prop.id} />)
     return (
-        <footer>this is where the  exercises will be.</footer>
+        <div>
+            {exerciseComponents}
+        </div>
     )
 }
 
