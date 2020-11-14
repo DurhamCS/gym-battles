@@ -13,9 +13,6 @@ function App() {
       <div className="InteracticeScreen">
         <InteractiveScreen />
       </div>
-      <div className="Exercises">
-        <Exercises />
-      </div>
      </div>
   );
 }

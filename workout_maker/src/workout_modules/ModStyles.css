@@ -2,3 +2,21 @@
     justify-content: center;
     align-items: center;
 }
+
+.Exercises{
+    text-align: center;
+    align-content: center;
+  background-color: #FFC000;
+}
+
+.InteracticeScreen{
+  background-color: #101010;
+  margin-left: 10%;
+  margin-right: 10%;
+  block-size: 500px;
+  border-color: #000000;
+}
+
+.Row {
+    margin-top: 40px;
+}

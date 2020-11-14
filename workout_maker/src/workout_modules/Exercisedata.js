@@ -1,19 +1,22 @@
 const exerciseData = [
     {
         id: 1,
-        exer: "pushup"
+        name: "pushup",
+        repsOrDuration: 0,
+        hasReps: 0,
+        breakAfterDuration: 0
     },
     {
         id: 2,
-        exer: "pullup"
+        name: "pullup"
     },
     {
         id: 3,
-        exer: "situp"
+        name: "situp"
     },
     {
         id: 4,
-        exer: "Plank"
+        name: "Plank"
     }
 ]
 
