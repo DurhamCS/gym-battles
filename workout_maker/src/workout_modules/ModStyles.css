@@ -3,11 +3,6 @@
     align-items: center;
 }
 
-.Exercises{
-    text-align: center;
-    align-content: center;
-  background-color: #FFC000;
-}
 
 .InteracticeScreen{
   background-color: #101010;
@@ -18,5 +13,9 @@
 }
 
 .Row {
-    margin-top: 40px;
+    margin-top: 70px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
 }

@@ -2,7 +2,7 @@
 
 function Header() {
     return (
-        <header>Choose your exercise</header>
+        <header>Challenge maker</header>
     )
 }
 

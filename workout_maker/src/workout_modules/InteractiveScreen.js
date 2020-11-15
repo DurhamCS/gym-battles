@@ -1,65 +1,68 @@
 import React from "react"
-import Exercises from "./Exercises"
 import "./ModStyles.css"
-import Draggable from "react-draggable";
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row} from 'react-grid-system';
 
 
 class InteractiveScreen extends React.Component {
     constructor() {
         super()
         this.state = {
-            noExercises: true,
-            activeBoxes: 0,
-            //state regarding the exercise blocks
+            name: "",
+            durationOrCount: 0,
+            type: false
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSend = this.handleSend.bind(this)
     }
 
-    Instructions() {
-        {
-            if (this.state.noExercises) {
-                return <main>Drag the exercises you want <br/> to do!</main>
-            }
-            else {
-                return <main>Drag more exercises, <br/> if you dare!</main>
-            }
+    handleChange(event) {
+        if (event.target.name !== "type") {
+            this.setState({
+                [event.target.name]: event.target.value
+            })
         }
+        else if (event.target.value === "Timed") {
+            this.setState({
+                type: true
+            })
+        }
+        else {
+            this.setState({
+                type: false
+            })
+        }   
+    }
+
+    handleSend(){
+        //return state
     }
     
     render() {
         return (
-            <div >
-                <div className="InteracticeScreen">
-                    <Container>
-                        <Col>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                            <Row className="Row" sm={6}>
-                            </Row>
-                            <hr></hr>
-                        </Col>
-                    </Container>
-                    {this.Instructions()}
-                    <button className="button">Save setup</button>
-                    <button className="button">Clear setup</button>
-                    <button className="button">Continue</button>
-                </div>
-                <div className="Exercises">
-                    <Exercises />
-                 </div>
+            <div>
+                <Container className="InteracticeScreen">
+                    <Row className="Row">
+                        <label for="name">Choose your exercise:</label> 
+                        <select id="name" name="name" onChange={this.handleChange}>
+                            <option value="Pushup">Pushup</option>
+                            <option value="Pullup">Pullup</option>
+                            <option value="Plank">Plank</option>
+                            <option value="Squat">Squat</option>
+                        </select>
+                    </Row>
+                    <Row className="Row">
+                        <label for="type">Choose the challenge type:</label> 
+                        <select id="type" name="type" onChange={this.handleChange}>
+                            <option value="Timed">Timed</option>
+                            <option value="repsmax">Who does the most reps</option>
+                        </select>
+                    </Row>
+                    <Row className="Row">
+                        <label for="durationOrCount">Enter number:</label>
+                        <input type="text" placeholder="60" id="durationOrCount" name="durationOrCount" onChange={this.handleChange}></input>
+                    </Row>
+                    <button className="button" onClick={this.handleSend}>Continue</button>
+                </Container>
             </div>
         );
     }    
