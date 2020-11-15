@@ -1,11 +1,11 @@
-import './App.css';
+import './BuilderApp.css';
 import Header from './workout_modules/Header.js';
 import InteractiveScreen from './workout_modules/InteractiveScreen.js';
 
 
-function App() {
+function BuilderApp() {
   return (
-    <div className="App">
+    <div className="BuilderApp">
       <div className="Header">
         <Header />
       </div>
@@ -16,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default BuilderApp;
