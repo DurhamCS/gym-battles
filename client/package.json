@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-github-btn": "^1.2.0",
+    "react-grid-system": "^7.1.1",
     "react-scripts": "3.4.1",
     "rodal": "^1.8.1",
     "simple-peer": "^9.7.2",

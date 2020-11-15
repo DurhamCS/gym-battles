@@ -61,7 +61,6 @@ class InteractiveScreen extends React.Component {
                         <label for="durationOrCount">Enter number:</label>
                         <input type="text" placeholder="60" id="durationOrCount" name="durationOrCount" onChange={this.handleChange}></input>
                     </Row>
-                    <button className="button" onClick={this.handleSend}>Continue</button>
                 </Container>
             </div>
         );

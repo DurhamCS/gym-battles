@@ -1,20 +1,7 @@
-.button {
-    justify-content: center;
-    align-items: center;
-}
-
-
-.InteracticeScreen{
-  margin-left: 10%;
-  margin-right: 10%;
-  block-size: 500px;
-  border-color: #000000;
-}
-
 .Row {
-    margin-top: 70px;
-    align-content: center;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
+  margin-top: 70px;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
 }

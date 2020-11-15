@@ -4,6 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import { initializeIcons } from "@uifabric/icons";
 import { Icon } from "@fluentui/react/lib/Icon";
 import { JoinSessionForm } from "./JoinSessionForm";
+import WorkoutBuilder from "./components/WorkoutBuilder";
 
 initializeIcons();
 
@@ -176,7 +177,17 @@ export class HomePage extends React.Component<
             closeHandler={this.closeSlide}
             className="HomePage-builder-slide"
             title="Create Session">
-            <button onClick={() => this.handleWorkoutConfirmed()}>Done</button>
+            <div>
+              <WorkoutBuilder />
+              <div className="d-flex">
+                <Icon
+                  onClick={() => this.handleWorkoutConfirmed()}
+                  iconName="CheckMark"
+                  style={{ marginTop: 32 }}
+                  className="JoinSessionForm-submit-button icon-btn"
+                />
+              </div>
+            </div>
           </Slide>
         </CSSTransition>
 
