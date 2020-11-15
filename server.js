@@ -5,8 +5,9 @@ const server = http.createServer(app)
 const socket = require('socket.io')
 const io = socket(server)
 const username = require('username-generator')
-const model = require('model')
+//const model = require('model')
 
+app.use(express.json())
 app.use(express.static('./client/build'));
 
 app.get('*', (req,res)=>{
@@ -36,11 +37,13 @@ function get_num_reps(position, userid) {
 
 
 app.get('/getReps', function (req, res) {
-    // get this from req somehow
-    let data = {userid: null, probabilities: null}
-    let model_data = model.predict(data.probabilities)
+    let data = req.body
+    console.log(data)
+    // let model_data = model.predict(data.probabilities)
+    let model_data = [1, 0, 0]
     let num_reps = get_num_reps(model_data, data.userid)
-    res.end(num_reps)
+    let partner_num_reps = reps[data.receiverid]
+    res.json({userRepCount: num_reps, partnerRepCount: partner_num_reps})
 })
 
 
