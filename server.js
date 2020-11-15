@@ -5,7 +5,7 @@ const server = http.createServer(app)
 const socket = require('socket.io')
 const io = socket(server)
 const username = require('username-generator')
-const model = require('model')
+//const model = require('model')
 
 app.use(express.static('./client/build'));
 
