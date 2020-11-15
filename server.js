@@ -6,6 +6,12 @@ const socket = require('socket.io')
 const io = socket(server)
 const username = require('username-generator')
 
+app.use(express.static('./client/build'));
+
+app.get('*', (req,res)=>{
+    res.sendFile(path.resolve(__dirname, "client","build","index.html"));
+})
+
 const users={}
 
 io.on('connection', socket => {
