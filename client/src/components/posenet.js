@@ -22,6 +22,10 @@ class PoseNet extends Component {
 
   constructor(props) {
     super(props, PoseNet.defaultProps)
+    this.state = {
+      userRepCount:0,
+      partnerRepCount:0,
+    }
   }
 
   getCanvas = elem => {
@@ -115,6 +119,12 @@ class PoseNet extends Component {
       const pose = await posenetModel.estimateSinglePose(video, {
         flipHorizontal: true
       })
+      fetch('/getReps').then(response => response.json).then(data =>{
+        this.setState({
+          userRepCount: data['userRepCount'],
+          partnerRepCount: data['partnerRepCount']
+        })
+      })
       canvasContext.clearRect(0, 0, videoWidth, videoHeight)
       
       const {keypoints, score} = pose;
@@ -156,6 +166,8 @@ class PoseNet extends Component {
       <>
       <video style = {videoStyle} id="videoNoShow" playsInline ref={this.getVideo}/>
       <canvas style = {canvasStyle} className="webcam" ref={this.getCanvas} />
+      <h1 class = 'rep-count'>{this.state.userRepCount}</h1>
+      <h1 class = 'rep-count'>{this.state.partnerRepCount}</h1>
       </>
     )
   }
