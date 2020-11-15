@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import Rodal from 'rodal'
 import {Howl} from 'howler'
+import WorkoutBuilder from './components/WorkoutBuilder';
 
 import  'rodal/lib/rodal.css'
 import './index.css';
@@ -49,6 +50,7 @@ function App() {
   let Landing = () => {return(
     <main>
         <div>
+            <WorkoutBuilder />
             <div className="actionText">Who do you want to call, <span>{yourID}</span>?</div>
         </div>
         <div>
@@ -57,7 +59,6 @@ function App() {
         </div>
     </main>
   )}
-
   useEffect(() => {
     socket.current = io.connect("/");
     
