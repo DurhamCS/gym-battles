@@ -7,6 +7,10 @@
   "author": "Somik Datta <developersomik@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fluentui/react": "^7.150.0",
+    "@types/react": "^16.9.56",
+    "@types/react-transition-group": "^4.4.0",
+    "@uifabric/icons": "^7.5.16",
     "awake-heroku": "^1.0.17",
     "express": "^4.17.1",
     "socket.io": "^2.3.0",
