@@ -163,11 +163,6 @@ class PoseNet extends Component {
   }
 
   render() {
-    const canvasStyle = {
-      position:'absolute',
-      top:0,
-      left:0
-    }
 
     const videoStyle = {
       display:'none',
@@ -175,7 +170,7 @@ class PoseNet extends Component {
     return (
       <>
       <video style = {videoStyle} id="videoNoShow" playsInline ref={this.getVideo}/>
-      <canvas style = {canvasStyle} className="webcam" ref={this.getCanvas} />
+      <canvas className="webcam" ref={this.getCanvas} />
       <h1 class = 'rep-count'>{this.state.userRepCount}</h1>
       <h1 class = 'rep-count'>{this.state.partnerRepCount}</h1>
       </>

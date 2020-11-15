@@ -16,7 +16,7 @@ export function JoinSessionForm(props: {
             placeholder="Sesh Code"
             borderless
             onChange={(e: any) => setValue(e.target.value)}
-            onKeyDown={(e: KeyboardEvent) =>
+            onKeyDown={(e: React.KeyboardEvent) =>
               e.key === "Enter"
                 ? props.handleSubmit(value.toLowerCase().trim())
                 : null
