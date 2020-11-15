@@ -2,6 +2,14 @@ import React from "react";
 import { Container, Row } from "react-grid-system";
 import "./WorkoutBuilder.css";
 
+interface Activity {
+  name: string;
+  hasReps: number;
+  repsOrDuration: number;
+}
+
+function activityCard(props: Activity) {}
+
 export class WorkoutBuilder extends React.Component {
   constructor(props: {}) {
     super(props);
