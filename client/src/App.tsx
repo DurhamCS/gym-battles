@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, Suspense } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import { HomePage } from "./HomePage";
@@ -7,8 +7,7 @@ import "./App.css";
 
 import "rodal/lib/rodal.css";
 import "./index.css";
-import PoseNet from "./components/posenet.js";
-import { scaleAndFlipPoses } from "@tensorflow-models/posenet";
+import PoseNet from "./components/posenet";
 
 function App() {
   const [yourID, setYourID] = useState("");
@@ -16,45 +15,15 @@ function App() {
   const [stream, setStream] = useState<MediaStream>();
   const [receivingCall, setReceivingCall] = useState(false);
   const [caller, setCaller] = useState("");
-  const [callingFriend, setCallingFriend] = useState(false);
   const [callerSignal, setCallerSignal] = useState<any>();
   const [callAccepted, setCallAccepted] = useState(false);
   const [callRejected, setCallRejected] = useState(false);
-  const [receiverID, setReceiverID] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
   const [audioMuted, setAudioMuted] = useState(false);
-  const [videoMuted, setVideoMuted] = useState(false);
-  const [isfullscreen, setFullscreen] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const userVideo = useRef<any>();
   const partnerVideo = useRef<any>();
   const socket = useRef<any>();
   const myPeer = useRef<any>();
-
-  let Landing = () => {
-    return (
-      <main>
-        <div>
-          <div className="actionText">
-            Who do you want to call, <span>{yourID}</span>?
-          </div>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Friend ID"
-            value={receiverID}
-            onChange={e => setReceiverID(e.target.value)}
-          />
-          <button onClick={() => callPeer(receiverID.toLowerCase().trim())}>
-            Call
-          </button>
-        </div>
-      </main>
-    );
-  };
 
   useEffect(() => {
     socket.current = io.connect("/");
@@ -79,7 +48,6 @@ function App() {
         .getUserMedia({ video: true, audio: true })
         .then(stream => {
           setStream(stream);
-          setCallingFriend(true);
           setCaller(id);
           if (userVideo.current) {
             userVideo.current.srcObject = stream;
@@ -141,16 +109,14 @@ function App() {
           });
         })
         .catch(() => {
-          setModalMessage(
+          alert(
             "You cannot place/ receive a call without granting video and audio permissions! Please change your settings to use Cuckoo."
           );
-          setModalVisible(true);
         });
     } else {
-      setModalMessage(
+      alert(
         "We think the username entered is wrong. Please check again and retry!"
       );
-      setModalVisible(true);
       return;
     }
   }
@@ -191,10 +157,9 @@ function App() {
         });
       })
       .catch(() => {
-        setModalMessage(
+        alert(
           "You cannot place/ receive a call without granting video and audio permissions! Please change your settings to use Cuckoo."
         );
-        setModalVisible(true);
       });
   }
 
@@ -217,22 +182,10 @@ function App() {
     }
   }
 
-  let UserVideo;
   let KeypointCanvas;
   if (stream) {
-    UserVideo = (
-      <video
-        className="userVideo"
-        playsInline
-        muted
-        ref={userVideo}
-        autoPlay
-      />
-    );
     KeypointCanvas = (
-      <PoseNet
-        video={UserVideo}
-      />
+      <PoseNet handleVideoRef={ref => (userVideo.current = ref)} />
     );
   }
 
@@ -240,38 +193,10 @@ function App() {
   if (callAccepted) {
     PartnerVideo = (
       <video
-        className="partnerVideo"
         playsInline
         ref={partnerVideo}
         autoPlay
       />
-    );
-  }
-
-  let incomingCall;
-  if (receivingCall && !callAccepted && !callRejected) {
-    incomingCall = (
-      <div className="incomingCallContainer">
-        <div className="incomingCall flex flex-column">
-          <div>
-            <span className="callerID">{caller}</span> is calling you!
-          </div>
-          <div className="incomingCallButtons flex">
-            <button
-              name="accept"
-              className="alertButtonPrimary"
-              onClick={() => acceptCall()}>
-              Accept
-            </button>
-            <button
-              name="reject"
-              className="alertButtonSecondary"
-              onClick={() => rejectCall()}>
-              Reject
-            </button>
-          </div>
-        </div>
-      </div>
     );
   }
 
@@ -293,12 +218,10 @@ function App() {
     />
   );
 
-  const videoRef = React.createRef();
   return (
     <div>
       <div className = 'videos-container'>
         <div className = 'video-container left'>
-          {UserVideo}
           {KeypointCanvas}
         </div>
         <div className = 'video-container right'>

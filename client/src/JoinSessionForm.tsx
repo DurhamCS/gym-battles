@@ -1,7 +1,6 @@
 import { Icon } from "@fluentui/react/lib/Icon";
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { ITextField } from "@fluentui/react";
 
 export function JoinSessionForm(props: {
   handleSubmit: (seshId: string) => void;
