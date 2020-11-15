@@ -50,7 +50,6 @@ function App() {
   let Landing = () => {return(
     <main>
         <div>
-            <WorkoutBuilder />
             <div className="actionText">Who do you want to call, <span>{yourID}</span>?</div>
         </div>
         <div>
@@ -293,6 +292,7 @@ function App() {
     <div>
       <div>
         <Landing/>
+        <WorkoutBuilder />
 
         <Rodal 
           visible={modalVisible} 
