@@ -19,3 +19,38 @@
   color: white;
   margin: 8px;
 }
+
+.video-container{
+  position: relative;
+  display: inline-block;
+  align-self: center;
+  margin: 4%;
+  width: 100%;
+}
+
+.webcam{
+  position: absolute;
+  height: 100%;
+  left: 0px;
+  bottom: 0px;
+}
+
+.rep-count{
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.videos-container{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.video-container>video{
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  border-radius: 1em;
+  box-shadow: 0 0 7px 0px #0000006b;
+}

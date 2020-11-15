@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import { HomePage } from "./HomePage";
-import { Icon } from "@fluentui/react";
+import { Icon, ScrollablePaneContext } from "@fluentui/react";
 import "./App.css";
 
 import "rodal/lib/rodal.css";
@@ -196,12 +196,6 @@ function App() {
         playsInline
         ref={partnerVideo}
         autoPlay
-        style={{
-          position: "absolute",
-          width: "50vw",
-          bottom: 0,
-          left: "50vw",
-        }}
       />
     );
   }
@@ -226,23 +220,19 @@ function App() {
 
   return (
     <div>
-      <div
-        style={{
-          height: "100vh",
-          width: "100vw",
-          position: "absolute",
-          left: 0,
-          top: 0,
-          overflow: "hidden",
-        }}>
-        {KeypointCanvas}
-        {PartnerVideo}
-        <div
-          className="controlsContainer"
-          style={{ margin: 16, position: "absolute", bottom: 0 }}>
-          {toggleMuteButton}
-          {hangUpButton}
+      <div className = 'videos-container'>
+        <div className = 'video-container left'>
+          {KeypointCanvas}
         </div>
+        <div className = 'video-container right'>
+          {PartnerVideo}
+        </div>
+      </div> 
+      <div
+        className="controlsContainer"
+        style={{ margin: 16, position: "absolute", bottom: 0 }}>
+        {toggleMuteButton}
+        {hangUpButton}
       </div>
       {!callAccepted ? (
         <div
