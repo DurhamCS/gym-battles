@@ -125,7 +125,10 @@ class PoseNet extends Component {
           'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify(pose)
+        body: JSON.stringify({
+          'userid':this.props.yourID,
+          'receiverid':this.props.receiverID,
+          'probabilities':pose})
     }).then(response => response.json).then(data =>{
         this.setState({
           userRepCount: data['userRepCount'],

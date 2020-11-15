@@ -221,7 +221,7 @@ function App() {
       <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
     );
     KeypointCanvas = (
-      <PoseNet video ={UserVideo}/>
+      <PoseNet yourID = {yourID} receiverID = {receiverID}/>
     )
   }
 
