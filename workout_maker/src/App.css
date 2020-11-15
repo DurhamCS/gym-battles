@@ -1,0 +1,16 @@
+
+
+.App {
+  margin: 0;
+  text-align: center;
+  background-color: #303030;
+  font-family: Nova Square;
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+}
+
+.Header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
