@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import { initializeIcons } from "@uifabric/icons";
 import { Icon } from "@fluentui/react/lib/Icon";
 import { JoinSessionForm } from "./JoinSessionForm";
-import WorkoutBuilder from "./components/WorkoutBuilder";
+import { WorkoutBuilder } from "./WorkoutBuilder";
 
 initializeIcons();
 
