@@ -7,7 +7,7 @@ import "./App.css";
 
 import "rodal/lib/rodal.css";
 import "./index.css";
-import PoseNet from "./components/posenet.js";
+import PoseNet from "./components/posenet";
 
 function App() {
   const [yourID, setYourID] = useState("");
@@ -18,7 +18,6 @@ function App() {
   const [callerSignal, setCallerSignal] = useState<any>();
   const [callAccepted, setCallAccepted] = useState(false);
   const [callRejected, setCallRejected] = useState(false);
-  const [receiverID, setReceiverID] = useState("");
   const [audioMuted, setAudioMuted] = useState(false);
 
   const userVideo = useRef<any>();
@@ -183,34 +182,10 @@ function App() {
     }
   }
 
-  let UserVideo;
   let KeypointCanvas;
   if (stream) {
-    UserVideo = (
-      <video
-        className="userVideo"
-        playsInline
-        muted
-        ref={userVideo}
-        autoPlay
-        style={{
-          position: "absolute",
-          width: "50vw",
-          bottom: 0,
-          left: 0,
-        }}
-      />
-    );
     KeypointCanvas = (
-      <PoseNet
-        style={{
-          position: "absolute",
-          width: "50vw",
-          bottom: 0,
-          left: 0,
-        }}
-        video={UserVideo}
-      />
+      <PoseNet handleVideoRef={ref => (userVideo.current = ref)} />
     );
   }
 
@@ -218,7 +193,6 @@ function App() {
   if (callAccepted) {
     PartnerVideo = (
       <video
-        className="partnerVideo"
         playsInline
         ref={partnerVideo}
         autoPlay
@@ -261,7 +235,6 @@ function App() {
           top: 0,
           overflow: "hidden",
         }}>
-        {UserVideo}
         {KeypointCanvas}
         {PartnerVideo}
         <div
