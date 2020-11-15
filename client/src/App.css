@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.callContainer {
+  background-color: #262626;
+  overflow: hidden;
+}
+
+.media-btn {
+  padding: 16px;
+  font-size: 28px;
+  color: white;
+  margin: 8px;
+}
