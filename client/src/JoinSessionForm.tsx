@@ -15,10 +15,9 @@ export function JoinSessionForm(props: {
           <TextField
             placeholder="Sesh Code"
             borderless
-            onChange={(e: Event) =>
-              setValue(((e.target as unknown) as ITextField).value!)
-            }
-            onKeyDown={(e: KeyboardEvent) =>
+            onChange={(e: any) => setValue(e.target.value)}
+
+            onKeyDown={(e: any) =>
               e.key === "Enter"
                 ? props.handleSubmit(value.toLowerCase().trim())
                 : null
