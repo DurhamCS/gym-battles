@@ -34,7 +34,7 @@ class InteractiveScreen extends React.Component {
     }
 
     handleSend(){
-        //return state
+        ;//return state
     }
     
     render() {
