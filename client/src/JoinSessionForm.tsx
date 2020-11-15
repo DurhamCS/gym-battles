@@ -14,6 +14,10 @@ export function JoinSessionForm(props: {
           <TextField
             placeholder="Sesh Code"
             borderless
+            styles={{
+              field: { backgroundColor: "transparent", color: "white" },
+              fieldGroup: { backgroundColor: "#00000033" },
+            }}
             onChange={(e: any) => setValue(e.target.value)}
             onKeyDown={(e: React.KeyboardEvent) =>
               e.key === "Enter"
