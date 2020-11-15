@@ -6,6 +6,7 @@ import {Howl} from 'howler'
 
 import  'rodal/lib/rodal.css'
 import './index.css';
+import PoseNet from './components/posenet.js'
 
 import camera from './Icons/camera.svg'
 import camerastop from './Icons/camera-stop.svg'
@@ -213,10 +214,14 @@ function App() {
     }
   }
   let UserVideo;
+  let KeypointCanvas;
   if (stream) {
     UserVideo = (
       <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
     );
+    KeypointCanvas = (
+      <PoseNet video ={UserVideo}/>
+    )
   }
 
   let PartnerVideo;
@@ -282,6 +287,7 @@ function App() {
     </span>
   }
 
+  const videoRef = React.createRef();
   return (
     <div>
       <div>
@@ -307,6 +313,7 @@ function App() {
         </div>
         <div className="userVideoContainer">
           {UserVideo}
+          {KeypointCanvas}
         </div>
         <div className="controlsContainer">
           {audioControl}
