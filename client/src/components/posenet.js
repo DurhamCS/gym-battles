@@ -119,7 +119,14 @@ class PoseNet extends Component {
       const pose = await posenetModel.estimateSinglePose(video, {
         flipHorizontal: true
       })
-      fetch('/getReps').then(response => response.json).then(data =>{
+      fetch('/getReps',{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(pose)
+    }).then(response => response.json).then(data =>{
         this.setState({
           userRepCount: data['userRepCount'],
           partnerRepCount: data['partnerRepCount']
