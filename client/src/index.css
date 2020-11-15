@@ -1,3 +1,14 @@
 .iconContainer>img{
     width:50px;
 }
+
+.userVideo{
+    transform: scaleX(-1);
+    width: 900px;
+    height:700px;
+}
+
+.userVideoContainer{
+    position: relative;
+}
+
