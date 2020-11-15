@@ -175,26 +175,18 @@ class PoseNet extends Component<PoseNetProps, { loading: boolean }, any> {
 
   render() {
     return (
-      <div>
+      <>
         <video
-          style={{
-            position: "absolute",
-            bottom: -60,
-            left: 0,
-            width: "50vw",
-            transform: "scaleX(-1)",
-          }}
           playsInline
           muted
           autoPlay
           ref={this.getVideo}
         />
         <canvas
-          style={{ position: "absolute", bottom: 0, left: 0, width: "50vw" }}
           className="webcam"
           ref={this.getCanvas}
         />
-      </div>
+      </>
     );
   }
 }
