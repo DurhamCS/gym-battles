@@ -1,5 +1,5 @@
 import { Icon } from "@fluentui/react/lib/Icon";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { ITextField } from "@fluentui/react";
 
@@ -15,9 +15,7 @@ export function JoinSessionForm(props: {
           <TextField
             placeholder="Sesh Code"
             borderless
-            onChange={(e: Event) =>
-              setValue(((e.target as unknown) as ITextField).value!)
-            }
+            onChange={(e: any) => setValue(e.target.value)}
             onKeyDown={(e: KeyboardEvent) =>
               e.key === "Enter"
                 ? props.handleSubmit(value.toLowerCase().trim())

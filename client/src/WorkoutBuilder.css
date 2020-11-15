@@ -5,3 +5,8 @@ label {
 .Row {
   margin: 16px;
 }
+
+.activity-card {
+  background-color: #262626;
+  border-radius: 16px;
+}

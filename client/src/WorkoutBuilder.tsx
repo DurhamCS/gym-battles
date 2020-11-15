@@ -6,9 +6,12 @@ interface Activity {
   name: string;
   hasReps: number;
   repsOrDuration: number;
+  breakAfterDuration: number;
 }
 
-function activityCard(props: Activity) {}
+function activityCard(props: Activity) {
+  return <div className="d-flex activity-card">{props.name}</div>;
+}
 
 export class WorkoutBuilder extends React.Component {
   constructor(props: {}) {
